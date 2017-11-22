@@ -39,3 +39,28 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json  
 app.use(bodyParser.json()) 
 ```
+
+* 访问页面报错`Error: Failed to lookup view "pages/list" in views directory "./views/pages"`
+
+> 在访问list页的时候报错，经过各种百度 google stackoverflow，最终发现，原来的文件名字拼写错误。
+
+* 发现后台录入页的样式对不上
+
+> 检查后发现，`form`拼写成`from` 导致样式没引用到，这种问题真的好难看到
+
+* 关于mongoose 模式 模型 文档
+
+* mongoose 报错：
+
+```
+(node:1556) DeprecationWarning: `open()` is deprecated in mongoose >= 4.11.0, us
+e `openUri()` instead, or set the `useMongoClient` option if using `connect()` o
+r `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mong
+o-client
+```
+
+> 解决办法：[http://blog.csdn.net/yingzizizizizizzz/article/details/74942107](http://blog.csdn.net/yingzizizizizizzz/article/details/74942107)
+
+* 后台录入页报错：`TypeError: Cannot read property 'movie' of undefined`
+
+> 未找到原因和解决办法，fuckfuckfuck
