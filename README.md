@@ -1,4 +1,4 @@
-## 遇到的问题
+## 遇到的问题（所有问题都是在windows下遇到的）
 
 * window下修改node启动服务的端口号
 > 参考文章：[https://stackoverflow.com/questions/9249830/how-can-i-set-node-env-production-on-windows](https://stackoverflow.com/questions/9249830/how-can-i-set-node-env-production-on-windows) 
@@ -39,6 +39,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json  
 app.use(bodyParser.json()) 
 ```
+在后面使用的过程中发现，直接使用`app.use(bodyParser())`就可以了。引用上面的两句会出现问题
 
 * 访问页面报错`Error: Failed to lookup view "pages/list" in views directory "./views/pages"`
 
@@ -63,4 +64,52 @@ o-client
 
 * 后台录入页报错：`TypeError: Cannot read property 'movie' of undefined`
 
-> 未找到原因和解决办法，fuckfuckfuck
+> 检查发现是`body-parser`解析出错，报错前后代码对比如下是如下：
+
+```
+// 报错的
+var bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: false }))  
+app.use(bodyParser.json())  
+```
+
+```
+// 不报错的
+var bodyParser = require('body-parser')
+app.use(bodyParser());
+```
+
+至于为什么这样写就报错了，暂时还不清楚
+
+* mongoose清除本地测试数据
+
+```
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/node-movies', {useMongoClient: true})
+```
+
+链接数据库的部分我是这样写的，可以看到我链接的本地数据库名字叫`node-movies`
+
+找到本地安装的mongoDB目录进入`bin`目录下找到`mongo.exe`双击运行
+
+```
+show dbs // 查看本地所有的数据库
+use node-movies // 进入到'node-movies'数据库
+db.movies.find({}) // 查找当前数据库下存储的所有movies数据
+db.movies.find({}).count() // 统计movies一共有多少条
+db.movies.remove({}) // 移除所有movies存储记录
+```
+
+在`mongo.exe`运行完以上命令即可清除本地的测试数据了
+
+* bower 新建配置文件`.bowerrc`
+
+```
+{
+  "directory": "public/libs"
+}
+```
+
+> 该文件用来配置bower下载的文件目录,正常情况下默认下载到`bower_components`目录下，如果存在`.bowerrc`文件则下载到该文件所配置的下载目录下
+
+* 使用jade模板一定要注意缩进问题

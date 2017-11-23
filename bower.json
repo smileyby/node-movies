@@ -1,0 +1,25 @@
+{
+  "name": "node-movies",
+  "description": "this is a node movies test",
+  "main": "",
+  "authors": [
+    "smileyby <smileyby@126.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "node.js"
+  ],
+  "homepage": "https://github.com/smileyby/node-movies",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

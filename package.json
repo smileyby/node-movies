@@ -1,5 +1,26 @@
 {
   "dependencies": {
     "body-parser": "^1.18.2"
-  }
+  },
+  "name": "node-movies",
+  "description": "* window下修改node启动服务的端口号\r > 参考文章：[https://stackoverflow.com/questions/9249830/how-can-i-set-node-env-production-on-windows](https://stackoverflow.com/questions/9249830/how-can-i-set-node-env-production-on-windows) \r > 且在`app.js`中端口变量代码修改为`var port = process.env.NODE_ENV || 3000`\r > 然后在PowerShell中通过命令`$env:NODE_ENV=\"1234\"` 和 `node app.js` 再次启动服务，现在就已经运行在1234端口了。",
+  "version": "0.0.1",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smileyby/node-movies.git"
+  },
+  "keywords": [
+    "node.js"
+  ],
+  "author": "smileyby",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smileyby/node-movies/issues"
+  },
+  "homepage": "https://github.com/smileyby/node-movies#readme"
 }

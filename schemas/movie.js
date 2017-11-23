@@ -37,12 +37,12 @@ MoviesSchema.statics = {
     return this
     .find({})
     .sort('meta.updateAt')
-    exec(cb)
+    .exec(cb)
   },
   finById: function(id, cb) {
     return this
     .find({_id: id})
-    exec(cb)
+    .exec(cb)
   }
 }
 
